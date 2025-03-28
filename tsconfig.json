@@ -3,9 +3,9 @@
     "outDir": "./dist",
     "target": "ESNext",
     "module": "NodeNext",
-    "baseUrl": "/src",
+    "baseUrl": "./",
     "paths": {
-      "@types/*": ["types/*"]
+      "@types": ["src/types/index"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

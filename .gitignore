@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Ignore environment config files
-/src/config/.env.ts
+*.env

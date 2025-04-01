@@ -1,9 +1,9 @@
 import express from 'express';
-import { getUsers, createUser } from '../controllers/userController';
+import {addRoom, joinRoom} from "../controllers/roomController";
 
 const router = express.Router();
 
-router.get('/', getUsers);
-router.post('/', createUser);
+router.post('/add-room', addRoom);
+router.put('/join-room', joinRoom)
 
 export default router;

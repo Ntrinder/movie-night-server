@@ -1,7 +1,8 @@
-import {Recommendation} from "@types";
+import {Recommendation, User} from "@types";
 
 export type Room = {
-    id: string;
+    id: number;
     name: string;
-    recommendations: Recommendation[]
+    recommendations: Recommendation[];
+    users: User[];
 }

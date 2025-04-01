@@ -1,12 +1,7 @@
 import express from 'express';
-// import apiRouter from './api';
-// import { initSocketServer } from './websockets/socketServer';
-import http from 'http';
+import apiRouter from "./api";
 
 export const app = express();
 
 app.use(express.json());
-// app.use('/api', apiRouter);
-
-// const server = http.createServer(app);
-// initSocketServer(server);
+app.use('/api', apiRouter);

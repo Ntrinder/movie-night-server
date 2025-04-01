@@ -1,18 +1,29 @@
-import {createRoom, deleteRoomById, getRoomById, updateRoom} from "../db/devDb";
-import {Room} from "@types";
+import {addUserToRoom, createRoom, deleteRoomById, findRoomById} from "../db/roomRepo";
+import {User} from "@types";
 
-export const addRoom = (name: string) => {
-    return createRoom(name);
+export const addRoom = (roomName: string) => {
+    return createRoom(roomName);
 };
 
-export const findRoom = (id: string) => {
-    return getRoomById(id);
-};
+export const joinRoom = (roomId: number, username: string) => {
+    const room = findRoomById(roomId);
 
-export const editRoom = (updatedRoom: Room) => {
-    return updateRoom(updatedRoom);
-};
+    if (!room) throw new Error('Room not found');
 
-export const removeRoom = (deletedRoomId: string) => {
+    const usernameTaken = room.users.some(user => user.name === username);
+
+    if (usernameTaken) throw new Error(
+        `Username ${username} is already taken`
+    )
+
+    const user: User = {
+        id: '',
+        name: username,
+    }
+
+    addUserToRoom(roomId, user);
+}
+
+export const removeRoom = (deletedRoomId: number) => {
     deleteRoomById(deletedRoomId);
 };

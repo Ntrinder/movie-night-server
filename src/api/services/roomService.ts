@@ -1,12 +1,12 @@
-import {addUserToRoom, createRoom, deleteRoomById, findRoomById} from "../db/roomRepo";
+import {addUserToRoom, createRoom, deleteRoomById, findRoomByCode, findRoomById} from "../db/roomRepo";
 import {User} from "@types";
 
 export const addRoom = (roomName: string) => {
     return createRoom(roomName);
 };
 
-export const joinRoom = (roomId: number, username: string) => {
-    const room = findRoomById(roomId);
+export const joinRoom = (roomCode: string, username: string) => {
+    const room = findRoomByCode(roomCode);
 
     if (!room) throw new Error('Room not found');
 
@@ -21,7 +21,7 @@ export const joinRoom = (roomId: number, username: string) => {
         name: username,
     }
 
-    addUserToRoom(roomId, user);
+    addUserToRoom(room.id, user);
 }
 
 export const removeRoom = (deletedRoomId: number) => {

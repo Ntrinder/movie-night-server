@@ -9,8 +9,8 @@ export const addRoom = async (req: Request, res: Response) => {
 
 export const joinRoom = async (req: Request, res: Response) => {
     try {
-        const { roomId, username } = req.body;
-        roomService.joinRoom(roomId, username);
+        const { roomCode, username } = req.body;
+        roomService.joinRoom(roomCode, username);
         res
             .status(201)
             .json({

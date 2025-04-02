@@ -25,3 +25,22 @@ export const joinRoom = async (req: Request, res: Response) => {
             });
     }
 }
+
+export const removeRoom = async (req: Request, res: Response) => {
+    try {
+        const { roomId } = req.body;
+        roomService.removeRoom(roomId);
+        res
+            .status(201)
+            .json({
+                message: 'Removed room successfully.'
+            });
+    } catch (e) {
+        res
+            .status(400)
+            .json({
+                error: true,
+                message: e instanceof Error ? e.message : 'An unexpected error occurred',
+            });
+    }
+}
